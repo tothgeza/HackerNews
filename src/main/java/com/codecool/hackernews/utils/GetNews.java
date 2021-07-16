@@ -28,7 +28,7 @@ public class GetNews {
             String strUrl = "https://api.hnpwa.com/v0/" + topic + "/" + pageNumber + ".json";
             URL url = new URL(strUrl);
             HttpsURLConnection con = (HttpsURLConnection) url.openConnection();
-            int responseCode = con.getResponseCode();
+//            int responseCode = con.getResponseCode();
 //            System.out.println("\nSending 'GET' request to URL : " + url);
 //            System.out.println("Response Code : " + responseCode);
 
@@ -41,7 +41,7 @@ public class GetNews {
             Type type = new TypeToken<List<News>>(){}.getType();
             newsList =  new Gson().fromJson(line, type);
         } catch (Exception e) {
-            System.out.println(e);
+            System.out.println("Error: " + e);
         }
     }
 

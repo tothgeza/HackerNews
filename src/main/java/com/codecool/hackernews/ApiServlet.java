@@ -5,9 +5,7 @@ import com.codecool.hackernews.utils.GetNews;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,7 +39,7 @@ public class ApiServlet extends javax.servlet.http.HttpServlet{
         GetNews news = GetNews.getInstance();
         news.requestNewsList(topicName, pageNumber);
         inpList = news.getNewsList();
-        System.out.println(inpList.toString());
+//        System.out.println(inpList.toString());
 
         Type type = new TypeToken<List<News>>(){}.getType();
         String newsList =  new Gson().toJson(inpList, type);

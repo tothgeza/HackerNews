@@ -111,10 +111,11 @@ function removeActive() {
     }
 }
 
-window.onload = function () {
-    initTopNewsButton();
-    initNewestButton();
-    initJobsButton();
-    initPreviousButton();
-    initNextButton();
-}
+// window.onload = function () {
+initTopNewsButton();
+initNewestButton();
+initJobsButton();
+getNews("top", "1");
+initPreviousButton();
+initNextButton();
+// }

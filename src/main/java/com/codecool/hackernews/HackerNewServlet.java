@@ -1,7 +1,5 @@
 package com.codecool.hackernews;
 
-import com.codecool.hackernews.model.News;
-import com.codecool.hackernews.utils.GetNews;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+
 
 @WebServlet(name = "hackerNewsServlet", urlPatterns = {"/"}, loadOnStartup = 1)
 public class HackerNewServlet extends javax.servlet.http.HttpServlet {
@@ -20,28 +18,7 @@ public class HackerNewServlet extends javax.servlet.http.HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        List<News> inpList;
-        GetNews news = GetNews.getInstance();
-        news.requestNewsList("news","1");
-        inpList = news.getNewsList();
-
         PrintWriter out = response.getWriter();
-
-        StringBuilder cards = new StringBuilder("            <div id=\"cards\" class=\"row gy-3\">" + "\n");
-        for (News x : inpList) {
-            String card;
-            card = "                <div class=\"col-sm-4\">\n" +
-                    "                    <div class=\"card dark bg-dark h-100\">\n" +
-                    "                        <div class=\"card-body\">\n" +
-                    "                            <a class=\"text-primary nounderline mb-5\" href=\"#" + x.getUrl() +"\">" + x.getTitle() + "</a>\n" +
-                    "                            <div class=\"text-white\">" + x.getTimeAgo() + "</div>\n" +
-                    "                            <div class=\"text-white\">" + x.getUser() + "</div>\n" +
-                    "                        </div>\n" +
-                    "                    </div>\n" +
-                    "                </div>" + "\n";
-            cards.append(card);
-        }
-        cards.append("            <div>").append("\n");
 
         String head = "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
@@ -98,7 +75,7 @@ public class HackerNewServlet extends javax.servlet.http.HttpServlet {
                 "                <button id=\"next\" class=\"btn btn-primary\" type=\"button\" data-next=\"2\" data-category=\"top\">Next</button>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
-                "            " + cards +
+                "            <div id=\"cards\" class=\"row gy-3\">" + "</div>" + "\n" +
                 "        </div>\n" +
                 "    </main>\n" +
                 "\n" + footer + "\n" +

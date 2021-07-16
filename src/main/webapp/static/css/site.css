@@ -1,15 +1,26 @@
-.visit {
-    color: blue;
-    font-weight: bolder;
-}
-
-.folder {
-    color: darkblue;
-    background-color: antiquewhite;
-    font-style: italic;
-    border: 1px solid darkred;
-    padding: 3px;
-}
 .nounderline{
     text-decoration: none;
+}
+.btn:active {
+    outline: none !important;
+    box-shadow: none;
+    background-color: #0d6efd;
+    color: #fff;
+}
+.btn:visited {
+    outline: none !important;
+    box-shadow: none;
+    background-color: #fff;
+    color: #0d6efd;
+}
+.btn:focus{
+    outline: none !important;
+    box-shadow: none;
+}
+.crop-text-1 {
+    -webkit-line-clamp: 2;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }

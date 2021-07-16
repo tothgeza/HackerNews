@@ -1,6 +1,5 @@
 package com.codecool.hackernews;
 
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -10,7 +9,7 @@ import java.io.PrintWriter;
 
 
 @WebServlet(name = "hackerNewsServlet", urlPatterns = {"/"}, loadOnStartup = 1)
-public class HackerNewServlet extends javax.servlet.http.HttpServlet {
+public class HackerNewsServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -34,7 +33,7 @@ public class HackerNewServlet extends javax.servlet.http.HttpServlet {
                 "    <link rel=\"stylesheet\" href=\"static/css/site.css\">\n" +
                 "\n" +
                 "    <title>Hacker news</title>\n";
-        String footer = "    <footer class=\"footer mt-5 py-1 bg-dark\">\n" +
+        String footer = "    <footer class=\"footer mt-auto py-1 bg-dark\">\n" +
                 "        <div class=\"container-sm\">\n" +
                 "            <div class=\"row\">\n" +
                 "                <div class=\"col-sm-8 text-end\">\n" +
@@ -51,10 +50,10 @@ public class HackerNewServlet extends javax.servlet.http.HttpServlet {
                 "        <div class=\"container justify-content-center\">\n" +
                 "            <ul class=\"navbar-nav\">\n" +
                 "                <li class=\"nav-item\">\n" +
-                "                    <a id=\"home\" class=\"nav-link active\" aria-current=\"page\" href=\"\">Hackson news</a>\n" +
+                "                    <label id=\"home\" class=\"navbar-brand text-warning\" aria-current=\"page\" href=\"\">Hackson news</label>\n" +
                 "                </li>\n" +
                 "                <li class=\"nav-item\">\n" +
-                "                    <a id=\"top-news\" class=\"nav-link\" href=\"#\">Top news</a>\n" +
+                "                    <a id=\"top-news\" class=\"nav-link active\" href=\"#\">Top news</a>\n" +
                 "                </li>\n" +
                 "                <li class=\"nav-item\">\n" +
                 "                    <a id=\"newest\" class=\"nav-link\" href=\"#\">Newest</a>\n" +
@@ -67,15 +66,15 @@ public class HackerNewServlet extends javax.servlet.http.HttpServlet {
                 "    </nav>\n" +
                 "    <main>\n" +
                 "        <div id=\"main\" class=\"container-sm\">\n" +
-                "        <div class=\"row mb-3\" id=\"navButtons\">\n" +
-                "            <div class=\"col-sm-6 text-start\">\n" +
-                "                <button id=\"previous\" class=\"btn btn-primary\" type=\"button\" data-prev=\"0\" data-category=\"top\">Previous</button>\n" +
+                "        <div class=\"row mb-5 justify-content-center \" id=\"navButtons\">\n" +
+                "            <div class=\"d-grid col-2\">\n" +
+                "                <button id=\"previous\" class=\"btn btn-outline-primary btn-sm\" type=\"button\" data-prev=\"0\" data-category=\"top\">Previous</button>\n" +
                 "            </div>\n" +
-                "            <div class=\"col-sm-6 text-end\">\n" +
-                "                <button id=\"next\" class=\"btn btn-primary\" type=\"button\" data-next=\"2\" data-category=\"top\">Next</button>\n" +
+                "            <div class=\"d-grid col-2\">\n" +
+                "                <button id=\"next\" class=\"btn btn-outline-primary btn-sm\" type=\"button\" data-next=\"2\" data-category=\"top\">Next</button>\n" +
                 "            </div>\n" +
                 "        </div>\n" +
-                "            <div id=\"cards\" class=\"row gy-3\">" + "</div>" + "\n" +
+                "        <div id=\"cards\" class=\"row gy-3 mb-5\">" + "</div>" + "\n" +
                 "        </div>\n" +
                 "    </main>\n" +
                 "\n" + footer + "\n" +
@@ -83,6 +82,5 @@ public class HackerNewServlet extends javax.servlet.http.HttpServlet {
                 "</html>";
         out.println(head + body);
         out.flush();
-
     }
 }

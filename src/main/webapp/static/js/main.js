@@ -10,14 +10,18 @@ function fillPage(data) {
     row.innerHTML = "";
     for (let news of data) {
         let outerHtml =
-            `<div class="col-sm-4">
-            <div class="card dark bg-dark h-100">
-            <div class="card-body">
-            <a class="card-title text-primary nounderline" href="${news.url}">${news.title} </a>
-            <div class="text-white">${news.time_ago}</div>
-            ${news.user != null ? `<div class="text-white">${news.user}</div>` : ''}
-            </div>
-            </div>
+            `<div class="col-sm-4 mb-2">
+                <div class="card h-100">
+                    <div class="card-body bg-light">
+                        <a class="card-title nounderline crop-text-1" href="${news.url}" target="_blank">${news.title}</a>
+                    </div>
+                    <div class="card-footer bg-transparent">
+                        <div class="row pt-auto justify-content-evenly">
+                            <div class="col pt-auto text-start"><small class="text-muted">${news.time_ago}</small></div>
+                            ${news.user != null ? `<div class="col text-end"><small>${news.user}</small></div>` : ''}
+                        </div>
+                    </div>
+                </div>
             </div>`;
         row.insertAdjacentHTML("beforeend", outerHtml);
     }
@@ -28,6 +32,8 @@ function initTopNewsButton() {
     topNews.addEventListener("click", function () {
             let previous = document.getElementById('previous');
             let next = document.getElementById('next');
+            previous.setAttribute("disabled", "true");
+            next.removeAttribute("disabled");
             previous.dataset.category = "top";
             previous.dataset.prev = "0";
             next.dataset.category = "top";
@@ -45,6 +51,8 @@ function initNewestButton() {
     newest.addEventListener("click", function () {
             let previous = document.getElementById('previous');
             let next = document.getElementById('next');
+            previous.setAttribute("disabled", "true");
+            next.removeAttribute("disabled");
             previous.dataset.category = "newest";
             previous.dataset.prev = "0";
             next.dataset.category = "newest";
@@ -61,10 +69,8 @@ function initJobsButton() {
     jobs.addEventListener("click", function () {
             let previous = document.getElementById('previous');
             let next = document.getElementById('next');
-            previous.dataset.category = "jobs";
-            previous.dataset.prev = "0";
-            next.dataset.category = "jobs";
-            next.dataset.next = "2";
+            previous.setAttribute("disabled", "true")
+            next.setAttribute("disabled","true");
             removeActive();
             jobs.classList.add('active');
             getNews("jobs", "1");
@@ -84,6 +90,7 @@ function initPreviousButton() {
             let category = previous.dataset.category;
             getNews(category, prevNum);
         }
+        setActiveButtons();
     });
 }
 
@@ -101,6 +108,7 @@ function initNextButton() {
             let category = next.dataset.category;
             getNews(category, nextNum);
         }
+        setActiveButtons();
     });
 }
 
@@ -111,11 +119,25 @@ function removeActive() {
     }
 }
 
-// window.onload = function () {
+function setActiveButtons() {
+    let next = document.getElementById('next');
+    let previous = document.getElementById('previous');
+    if (next.dataset.next === "11" || previous.dataset.category === "newest" && next.dataset.next === "8"){
+        next.setAttribute("disabled", "true");
+    } else {
+        next.removeAttribute("disabled");
+    }
+    if (previous.dataset.prev === "0"){
+        previous.setAttribute("disabled", "true");
+    } else {
+        previous.removeAttribute("disabled");
+    }
+}
+
 initTopNewsButton();
 initNewestButton();
 initJobsButton();
 getNews("top", "1");
 initPreviousButton();
 initNextButton();
-// }
+setActiveButtons();

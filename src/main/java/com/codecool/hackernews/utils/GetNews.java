@@ -27,7 +27,6 @@ public class GetNews {
                     new InputStreamReader(con.getInputStream()));
 
             newsList = reader.readLine();
-            System.out.println(newsList);
             reader.close();
             con.disconnect();
         } catch (Exception e) {

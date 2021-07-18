@@ -10,7 +10,7 @@
   <br />
 </p>
 
-![Hacker News Client](static/images/screenshot.png)
+![Hacker News Client](src/main/webapp/static/images/screenshot.png)
 
 ## Introduction
 

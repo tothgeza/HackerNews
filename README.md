@@ -35,6 +35,8 @@ Use Heroku link: https://hacker-news-tg.herokuapp.com/
 
 ## Contact
 
-Géza Tóth - toth.geza.0425@gmail.com
+[<img src="https://img.shields.io/badge/Linkedin-white?style=flat&logo=linkedin&labelColor=blue" alt="LinkedIn logo" title="LinkedIn" height="25" />](https://www.linkedin.com/in/gezatoth)
+[<img src="https://img.shields.io/badge/Gmail-white?style=flat&logo=gmail&labelColor=white" alt="LinkedIn logo" title="LinkedIn" height="25" />](mailto:toth.geza.0425@gmail.com)
+
 
 Project Link: [https://hacker-news-tg.herokuapp.com](https://hacker-news-tg.herokuapp.com)
